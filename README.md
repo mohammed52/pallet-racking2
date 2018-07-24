@@ -1,1 +1,1 @@
-quotation automator for drive in racking system
+quotation automator for drive in racking
