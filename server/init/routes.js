@@ -12,13 +12,14 @@ const selectedOptionsController = controllers && controllers.selectedOptionsCont
 
 export default (app) => {
   // user routes
-  // if (usersController) {
-  //   app.post('/sessions', usersController.login);
-  //   app.post('/users', usersController.signUp);
-  //   app.delete('/sessions', usersController.logout);
-  // } else {
-  //   console.warn(unsupportedMessage('users routes'));
-  // }
+
+if (usersController) {
+  app.post('/sessions', usersController.login);
+  app.post('/users', usersController.signUp);
+  app.delete('/sessions', usersController.logout);
+} else {
+  console.warn(unsupportedMessage('users routes'));
+}
 
   // if (passportConfig && passportConfig.google) {
   //   // google auth
