@@ -15,7 +15,7 @@ var cors = require('cors')
 /*
  * Database-specific setup
  * - connect to MongoDB using mongoose
- * - register mongoose Schema
+ * - register mongoose Schema woie test 2
  */
 // connect();
 
