@@ -17,12 +17,12 @@ var cors = require('cors')
  * - connect to MongoDB using mongoose
  * - register mongoose Schema woie test 2
  */
-// connect();
+connect();
 
 /*
  * REMOVE if you do not need passport configuration
  */
-// initPassport();
+initPassport();
 
 if (isDebug) {
   // enable webpack hot module replacement
