@@ -1,4 +1,4 @@
-/*@import '../settings';
+@import '../settings';
 @import '../common/typography';
 @import '../common/colors';
 @import '../common/button';
@@ -71,4 +71,3 @@
   @apply --small;
   color: var(--colorBombay);
 }
-*/

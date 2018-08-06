@@ -23,12 +23,13 @@ export default (store) => {
   };
 
   const redirectAuth = (nextState, replace, callback) => {
+    console.log("store.getState()", store.getState())
     const {user: {authenticated}} = store.getState();
-    if (authenticated) {
-      replace({
-        pathname: '/'
-      });
-    }
+    // if (authenticated) {
+    //   replace({
+    //     pathname: '/'
+    //   });
+    // }
     callback();
   };
   return (

@@ -11,6 +11,7 @@ export function login(req, res, next) {
     if (!user) {
       return res.sendStatus(401);
     }
+    if (!user.allowedAccess) return res.sendStatus(402);
     // Passport exposes a login() function on req (also aliased as
     // logIn()) that can be used to establish a login session
     return req.logIn(user, (loginErr) => {
@@ -38,13 +39,18 @@ export function signUp(req, res, next) {
     password: req.body.password
   });
 
-  User.findOne({ email: req.body.email }, (findErr, existingUser) => {
+  User.findOne({
+    email: req.body.email
+  }, (findErr, existingUser) => {
     if (existingUser) {
       return res.sendStatus(409);
     }
 
+
     return user.save((saveErr) => {
       if (saveErr) return next(saveErr);
+    if (!user.allowedAccess) return res.sendStatus(404);
+
       return req.logIn(user, (loginErr) => {
         if (loginErr) return res.sendStatus(401);
         return res.sendStatus(200);
