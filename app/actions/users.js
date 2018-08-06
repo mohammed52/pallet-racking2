@@ -1,7 +1,7 @@
-import { push } from 'react-router-redux';
-import { authService } from '../services';
+import { push } from "react-router-redux";
+import { authService } from "../services";
 
-import * as types from '../types';
+import * as types from "../types";
 
 function beginLogin() {
   return { type: types.MANUAL_LOGIN_USER };
@@ -40,7 +40,7 @@ function signUpSuccess(message) {
 }
 
 function beginLogout() {
-  return { type: types.LOGOUT_USER};
+  return { type: types.LOGOUT_USER };
 }
 
 function logoutSuccess() {
@@ -56,45 +56,56 @@ export function toggleLoginMode() {
 }
 
 export function manualLogin(data) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(beginLogin());
 
-    return authService().login(data)
-      .then((response) => {
-          dispatch(loginSuccess('You have been successfully logged in'));
-          dispatch(push('/'));
+    return authService()
+      .login(data)
+      .then(response => {
+        dispatch(loginSuccess("You have been successfully logged in"));
+        dispatch(push("/"));
       })
-      .catch((err) => {
-        dispatch(loginError('Oops! Invalid username or password'));
+      .catch(err => {
+        if (err.response.status === 403) {
+          dispatch(loginError("Verification pending for the user"));
+        } else {
+          dispatch(loginError("Oops! Invalid username or password"));
+        }
       });
   };
 }
 
 export function signUp(data) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(beginSignUp());
 
-    return authService().signUp(data)
-      .then((response) => {
-          dispatch(signUpSuccess('You have successfully registered an account!'));
-          dispatch(push('/'));
+    return authService()
+      .signUp(data)
+      .then(response => {
+        dispatch(signUpSuccess("You have successfully registered an account!"));
+        dispatch(push("/"));
       })
-      .catch((err) => {
-        dispatch(signUpError('Oops! Something went wrong when signing up'));
+      .catch(err => {
+        if (err.response.status === 402) {
+          dispatch(loginError("Account Created, Verification pending"));
+        } else {
+          dispatch(signUpError("Oops! Something went wrong when signing up"));
+        }
       });
   };
 }
 
 export function logOut() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(beginLogout());
 
-    return authService().logOut()
-      .then((response) => {
-          dispatch(logoutSuccess());
-          dispatch(push('/login'));
+    return authService()
+      .logOut()
+      .then(response => {
+        dispatch(logoutSuccess());
+        dispatch(push("/login"));
       })
-      .catch((err) => {
+      .catch(err => {
         dispatch(logoutError());
       });
   };
