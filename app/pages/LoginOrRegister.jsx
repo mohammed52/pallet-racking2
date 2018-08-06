@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Page from '../pages/Page';
-import ShowDocsContainer from '../containers/ShowDocsContainer';
+import LoginOrRegisterContainer from '../containers/LoginOrRegister';
 
-class ShowDocsPage extends Component {
+class LoginOrRegister extends Component {
   getMetaData() {
     return {
       title: this.pageTitle(),
@@ -12,15 +12,12 @@ class ShowDocsPage extends Component {
   }
 
   pageTitle = () => {
-    return 'YMTM | Documents';
+    return 'LoginOrRegister | reactGo';
   };
 
   pageMeta = () => {
     return [
-      {
-        name: 'description',
-        content: 'generate a list of application documents required by YMTM'
-      }
+      { name: 'description', content: 'A reactGo example of a login or register page' }
     ];
   };
 
@@ -31,11 +28,10 @@ class ShowDocsPage extends Component {
   render() {
     return (
       <Page {...this.getMetaData()}>
-        <ShowDocsContainer {...this.props} />
+        <LoginOrRegisterContainer {...this.props} />
       </Page>
     );
   }
 }
 
-export default ShowDocsPage;
-
+export default LoginOrRegister;

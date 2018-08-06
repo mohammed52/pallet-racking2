@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
-// import cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import path from 'path';
 import flash from 'express-flash';
 import methodOverride from 'method-override';
@@ -27,7 +27,6 @@ export default (app) => {
     extended: true
   })); // for parsing application/x-www-form-urlencoded
   app.use(methodOverride());
-  // app.use(cookieParser());
 
   app.use(express.static(path.join(process.cwd(), 'public')));
   app.use(express.static(path.join(process.cwd(), 'public2')));
@@ -60,11 +59,11 @@ export default (app) => {
   //                  However, it requires an https-enabled website, i.e., HTTPS is necessary for secure cookies.
   //                  If secure is set, and you access your site over HTTP, the cookie will not be set.
   let sessionStore = null;
-  // if (!dbSession) {
-  //   console.warn(unsupportedMessage('session'));
-  // } else {
-  //   sessionStore = dbSession();
-  // }
+  if (!dbSession) {
+    console.warn(unsupportedMessage('session'));
+  } else {
+    sessionStore = dbSession();
+  }
 
   const sess = {
     resave: false,
@@ -93,10 +92,10 @@ export default (app) => {
   }
   console.log('--------------------------');
 
-  // app.use(session(sess));
+  app.use(session(sess));
 
-  // app.use(passport.initialize());
-  // app.use(passport.session());
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(flash());
 };
