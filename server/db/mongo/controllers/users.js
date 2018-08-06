@@ -11,7 +11,7 @@ export function login(req, res, next) {
     if (!user) {
       return res.sendStatus(401);
     }
-    if (!user.allowedAccess) return res.sendStatus(402);
+    // if (!user.allowedAccess) return res.sendStatus(403);
     // Passport exposes a login() function on req (also aliased as
     // logIn()) that can be used to establish a login session
     return req.logIn(user, (loginErr) => {

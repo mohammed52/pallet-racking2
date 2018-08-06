@@ -36,7 +36,8 @@ export default (store) => {
     <Route path="/"
            component={App}>
       <IndexRoute component={Home}
-                  fetchData={null} />
+                  fetchData={null} 
+                  onEnter={requireAuth} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
 
     </Route>

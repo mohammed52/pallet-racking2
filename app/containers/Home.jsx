@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { browserHistory } from 'react-router';
-import styles from '../css/components/homeStyles';
+import styles from '../css/components/homeStyles.css';
 import ymtm from '../images/ymtm.png';
 import { DEFAULT_SETTINGS } from './helpers/defaultSettings'
 import { setAmount, setSourceOfIncome, setPurpose, setRepeatApply } from '../actions/selectedOptionsActions'
+import { logOut } from '../actions/users';
 // import OptionsFormComponent from '../components/OptionsFormComponent'
 
 var ReactBootstrap = require('react-bootstrap');
@@ -32,6 +33,7 @@ class Home extends Component {
     this.handlerepeatApplyOptionsChange = this.handlerepeatApplyOptionsChange.bind(this);
     this.btnClickGetDocList = this.btnClickGetDocList.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
+    this.btnClickLogout = this.btnClickLogout.bind(this);
     // console.log("this.props.location.state.applicationDetails", this.props.location.state.applicationDetails);
 
   // this.state = {
@@ -94,7 +96,10 @@ class Home extends Component {
     setAmount(event.target.value);
   }
 
-
+  btnClickLogout() {
+    console.log("btnClickLogout");
+    this.props.logOut();
+  }
 
   render() {
 
@@ -107,6 +112,10 @@ class Home extends Component {
             <div className={[styles.optionCategory, "well"].join(' ')}>
             Hello world
             </div>
+            <br/> 
+        <button className="btn btn-default" type="button" onClick={this.btnClickLogout}>
+          Logout
+        </button>
           </div>
         </form>
         <br/>
@@ -117,7 +126,8 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  selectedOptions: PropTypes.object.isRequired
+  selectedOptions: PropTypes.object.isRequired,
+  logOut: PropTypes.func.isRequired
 // topics: PropTypes.array.isRequired,
 // typing: PropTypes.func.isRequired,
 // createTopic: PropTypes.func.isRequired,
@@ -140,5 +150,6 @@ export default connect(mapStateToProps, {
   setPurpose,
   setSourceOfIncome,
   setAmount,
-  setRepeatApply
+  setRepeatApply,
+  logOut
 })(Home);
