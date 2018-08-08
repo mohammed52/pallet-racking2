@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
-import user from '../reducers/user';
+import { combineReducers } from "redux";
+import { routerReducer as routing } from "react-router-redux";
+import user from "../reducers/user";
 // import topic from '../reducers/topic';
-import message from '../reducers/message';
-import selectedOptions from './selectedOptionsReducer';
-import * as types from '../types';
+import message from "../reducers/message";
+import selectedOptions from "./selectedOptionsReducer";
+import fileUpload from "./fileUpload";
+import * as types from "../types";
 
 const isFetching = (state = false, action) => {
   switch (action.type) {
@@ -18,15 +19,15 @@ const isFetching = (state = false, action) => {
   }
 };
 
-
 // Combine reducers with routeReducer which keeps track of
 // router state
 const appReducer = combineReducers({
   selectedOptions,
-  routing, 
+  routing,
   user,
   isFetching,
-  message
-})
+  message,
+  fileUpload
+});
 
 export default appReducer;
