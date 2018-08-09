@@ -4,7 +4,7 @@ import user from "../reducers/user";
 // import topic from '../reducers/topic';
 import message from "../reducers/message";
 import selectedOptions from "./selectedOptionsReducer";
-import fileUpload from "./fileUpload";
+import files from "./filesReducer";
 import * as types from "../types";
 
 const isFetching = (state = false, action) => {
@@ -27,7 +27,7 @@ const appReducer = combineReducers({
   user,
   isFetching,
   message,
-  fileUpload
+  files
 });
 
 export default appReducer;

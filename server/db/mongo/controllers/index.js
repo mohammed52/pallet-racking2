@@ -1,9 +1,7 @@
-import users from './users';
-import selectedOptionsController from './selectedOptionsController';
+import users from "./users";
 
-export {users, selectedOptionsController };
+export { users };
 
 export default {
-  users,
-  selectedOptionsController
+	users
 };

@@ -22,28 +22,7 @@ export default app => {
     console.warn(unsupportedMessage("users routes"));
   }
 
-  // var storage = multer.diskStorage({
-  //   destination: (req, file, callback) => {
-  //     callback(null, "./uploads");
-  //   },
-  //   filename: (req, file, callback) => {
-  //     callback(null, file.fieldname + "-" + Date.now());
-  //   }
-  // });
-
-  // var upload = multer({ storage }).array("userPhoto", 2);
-
   if (filesController) {
     app.post("/api/fileupload", filesController);
   }
-  // app.post("/api/photo", (req, res) => {
-  //   upload(req, res, err => {
-  //     //console.log(req.body);
-  //     //console.log(req.files);
-  //     if (err) {
-  //       return res.end("Error uploading file.");
-  //     }
-  //     res.end("File is uploaded");
-  //   });
-  // });
 };

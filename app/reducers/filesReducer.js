@@ -1,8 +1,11 @@
+import { combineReducers } from "redux";
+import * as types from "../types";
+
 let initialState = {
   filesUploaded: false
 };
 
-const fileUpload = (state = initialState, action) => {
+const files = (state = initialState, action) => {
   switch (action.type) {
     case "UPLOAD_SUCCESSFUL": {
       let returnObj = {
@@ -18,4 +21,8 @@ const fileUpload = (state = initialState, action) => {
   }
 };
 
-export default fileUpload;
+const filesReducer = combineReducers({
+  files
+});
+
+export default filesReducer;
