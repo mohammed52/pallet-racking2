@@ -1,17 +1,38 @@
 import { push } from "react-router-redux";
-import { authService } from "../services";
+import { fileService } from "../services";
 
 import * as types from "../types";
 
-function filesUploadedStatus(status) {
+function beginFilesUpload(status) {
   return {
-    type: types.FILES_UPLOAD_SUCCESSFUL,
+    type: types.FILES_UPLOADING,
     payload: status
   };
 }
 
-export function updateFileUpdateStatur(data) {
+function filesUploadSuccess(status) {
+  return {
+    type: types.FILES_UPLOAD_SUCCESS
+  };
+}
+
+function filesUploadFail(status) {
+  return {
+    type: types.FILES_UPLOAD_FAIL
+  };
+}
+
+export function filesUpload(data) {
   return dispatch => {
-    dispatch(filesUploadedStatus());
+    dispatch(beginFilesUpload);
+
+    return fileService
+      .uploadFiles()
+      .then(response => {
+        dispatch(filesUploadSuccess());
+      })
+      .catch(err => {
+        dispatch(filesUploadFail());
+      });
   };
 }
