@@ -23,7 +23,7 @@ export default (store) => {
   };
 
   const redirectAuth = (nextState, replace, callback) => {
-    console.log("store.getState()", store.getState())
+    // console.log("store.getState()", store.getState())
     const {user: {authenticated}} = store.getState();
     // if (authenticated) {
     //   replace({
@@ -36,10 +36,11 @@ export default (store) => {
     <Route path="/"
            component={App}>
       <IndexRoute component={Home}
-                  fetchData={null} 
+                  fetchData={null}
                   onEnter={requireAuth} />
-      <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
-
+      <Route path="login"
+             component={LoginOrRegister}
+             onEnter={redirectAuth} />
     </Route>
   );
 };
