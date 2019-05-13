@@ -111,7 +111,7 @@ class Home extends Component {
     return (
       <div className={[styles.homeWrapper].join(" ")}>
         <h3 className={[styles.titleText].join(" ")}>
-          Get the List of Documents required for your Qardan Hasana Application:
+          Check Heroku and Github DONE
         </h3>
         <form
           id="uploadForm"
