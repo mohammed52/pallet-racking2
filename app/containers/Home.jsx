@@ -13,7 +13,6 @@ import {
   setRepeatApply
 } from "../actions/selectedOptionsActions";
 import { logOut } from "../actions/users";
-// import OptionsFormComponent from '../components/OptionsFormComponent'
 
 var ReactBootstrap = require("react-bootstrap");
 var Button = ReactBootstrap.Button;
@@ -21,11 +20,6 @@ var Modal = ReactBootstrap.Modal;
 var FormGroup = ReactBootstrap.FormGroup;
 var ControlLabel = ReactBootstrap.ControlLabel;
 var FormControl = ReactBootstrap.FormControl;
-var Radio = ReactBootstrap.Radio;
-var Table = ReactBootstrap.Table;
-var FieldGroup = ReactBootstrap.FieldGroup;
-var Input = ReactBootstrap.Input;
-var Checkbox = ReactBootstrap.Checkbox;
 
 class Home extends Component {
   constructor(props) {
@@ -40,14 +34,7 @@ class Home extends Component {
     this.btnClickGetDocList = this.btnClickGetDocList.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
     this.btnClickLogout = this.btnClickLogout.bind(this);
-    // console.log("this.props.location.state.applicationDetails", this.props.location.state.applicationDetails);
-
-    // this.state = {
-    //   PURPOSE: DEFAULT_SETTINGS.PURPOSE.TAG_EXISTING_BUSINESS,
-    //   SOURCE_OF_INCOME: DEFAULT_SETTINGS.SOURCE_OF_INCOME.TAG_BUSINESS_SOLE_PROP,
-    //   AMOUNT: DEFAULT_SETTINGS.AMOUNT,
-    //   REPEAT_APPLY: DEFAULT_SETTINGS.REPEAT_APPLY.TAG_FIRST_TIME_APPLY
-    // }
+    this.createNewProject = this.createNewProject.bind(this);
   }
 
   componentDidMount() {
@@ -107,40 +94,31 @@ class Home extends Component {
     this.props.logOut();
   }
 
+  createNewProject() {
+    browserHistory.push({ pathname: "/newpalletrackproject" });
+  }
   render() {
     return (
       <div className={[styles.homeWrapper].join(" ")}>
-        <h3 className={[styles.titleText].join(" ")}>
-          Check Heroku and Github DONE
-        </h3>
-        <form
-          id="uploadForm"
-          action="/api/fileupload"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <div className={[styles.optionsWrapper].join(" ")}>
-            <div className={[styles.optionCategory, "well"].join(" ")}>
-              Hello world
-            </div>
+        <div className="container-fluid row testbg-1 text-center">
+          <div className="col-sm-6 center-block container-fluid testbg-2">
             <br />
-            <br />
-
-            <button
-              className="btn btn-default"
-              type="button"
-              onClick={this.btnClickLogout}
+            <Button
+              bsStyle="primary"
+              bsSize="large"
+              onClick={this.createNewProject}
             >
-              Logout
-            </button>
+              Create New
+            </Button>
             <br />
-            <input type="file" name="userPhoto" multiple />
-            <input type="submit" value="Upload Image" name="submit" />
-            <span id="status" />
+            <br />
+            <Button bsStyle="info" bsSize="small" onClick={this.viewAll}>
+              View All
+            </Button>
+            <br />
           </div>
-        </form>
-        <br />
-        <br />
+          <div className="col-sm-6 container-fluid testbg-2" />
+        </div>
       </div>
     );
   }
