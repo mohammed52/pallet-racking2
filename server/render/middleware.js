@@ -1,9 +1,9 @@
-import { createMemoryHistory, match } from 'react-router';
-import createRoutes from '../../app/routes';
-import configureStore from '../../app/store/configureStore';
-import * as types from '../../app/types';
-import pageRenderer from './pageRenderer';
-import fetchDataForRoute from '../../app/utils/fetchDataForRoute';
+import { createMemoryHistory, match } from "react-router";
+import createRoutes from "../../app/routes";
+import configureStore from "../../app/store/configureStore";
+import * as types from "../../app/types";
+import pageRenderer from "./pageRenderer";
+import fetchDataForRoute from "../../app/utils/fetchDataForRoute";
 
 /*
  * Export render function to be used in server/config/routes.js
@@ -11,16 +11,71 @@ import fetchDataForRoute from '../../app/utils/fetchDataForRoute';
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
+  const tempData = {
+    projectSettings: {
+      racksDescription: "10x4x5, 3level, 1000kgs/lvl",
+      companyName: "MEK",
+      projectTitle: "Yamaha Project",
+      currentMetalPrices: 90
+    },
+    frame: {
+      frameHeight: "12",
+      frameQty: "2",
+      frameDepth: "3"
+    },
+    bays: [
+      {
+        length: "9",
+        qty: "1",
+        levels: "3",
+        loadPerLevel: "2000"
+      },
+      {
+        length: "",
+        qty: "",
+        levels: "",
+        loadPerLevel: ""
+      },
+      {
+        length: "",
+        qty: "",
+        levels: "",
+        loadPerLevel: ""
+      },
+      {
+        length: "",
+        qty: "",
+        levels: "",
+        loadPerLevel: ""
+      }
+    ],
+    shelfType: "noShelf",
+    createdAt: new Date(),
+    _id: null,
+    margin: 10
+  };
+
+  const defaultProjectSpecs = {
+    backgroundColor: "lightgrey",
+    showModalFlag: false,
+    companyProjectTitle: { companyName: "", projectTitle: "" },
+    defaultProjectSpecs: tempData
+  };
+
   const authenticated = req.isAuthenticated();
   const history = createMemoryHistory();
-  const store = configureStore({
-    user: {
-      authenticated,
-      isWaiting: false,
-      message: '',
-      isLogin: true
-    }
-  }, history);
+  const store = configureStore(
+    {
+      user: {
+        authenticated,
+        isWaiting: false,
+        message: "",
+        isLogin: true
+      },
+      defaultProjectSpecs
+    },
+    history
+  );
   const routes = createRoutes(store);
 
   /*
@@ -44,7 +99,7 @@ export default function render(req, res) {
    * If all three parameters are `undefined`, this means that there was no route found matching the
    * given location.
    */
-  match({routes, location: req.url}, (err, redirect, props) => {
+  match({ routes, location: req.url }, (err, redirect, props) => {
     if (err) {
       res.status(500).json(err);
     } else if (redirect) {
@@ -54,12 +109,12 @@ export default function render(req, res) {
       // promises to resolve before returning to browser
       store.dispatch({ type: types.CREATE_REQUEST });
       fetchDataForRoute(props)
-        .then((data) => {
+        .then(data => {
           store.dispatch({ type: types.REQUEST_SUCCESS, data });
           const html = pageRenderer(store, props);
           res.status(200).send(html);
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           res.status(500).json(err);
         });
