@@ -11,7 +11,10 @@ import fetchDataForRoute from "../../app/utils/fetchDataForRoute";
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
-  const tempData = {
+  const authenticated = req.isAuthenticated();
+  const history = createMemoryHistory();
+
+  const newPalletRackProjectSpecs = {
     projectSettings: {
       racksDescription: "10x4x5, 3level, 1000kgs/lvl",
       companyName: "MEK",
@@ -55,15 +58,6 @@ export default function render(req, res) {
     margin: 10
   };
 
-  const defaultProjectSpecs = {
-    backgroundColor: "lightgrey",
-    showModalFlag: false,
-    companyProjectTitle: { companyName: "", projectTitle: "" },
-    defaultProjectSpecs: tempData
-  };
-
-  const authenticated = req.isAuthenticated();
-  const history = createMemoryHistory();
   const store = configureStore(
     {
       user: {
@@ -72,7 +66,7 @@ export default function render(req, res) {
         message: "",
         isLogin: true
       },
-      defaultProjectSpecs
+      newPalletRackProjectSpecs
     },
     history
   );

@@ -3,8 +3,8 @@ import { routerReducer as routing } from "react-router-redux";
 import user from "../reducers/user";
 // import topic from '../reducers/topic';
 import message from "../reducers/message";
-import selectedOptions from "./selectedOptionsReducer";
 import files from "./filesReducer";
+import newPalletRackProjectSpecs from "./newPalletRackProjectSpecs";
 import * as types from "../types";
 
 const isFetching = (state = false, action) => {
@@ -22,12 +22,12 @@ const isFetching = (state = false, action) => {
 // Combine reducers with routeReducer which keeps track of
 // router state
 const appReducer = combineReducers({
-  selectedOptions,
   routing,
   user,
   isFetching,
   message,
-  files
+  files,
+  newPalletRackProjectSpecs
 });
 
 export default appReducer;

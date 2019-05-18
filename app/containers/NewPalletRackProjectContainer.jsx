@@ -359,7 +359,7 @@ NewPalletRackProjectContainer.propTypes = {
 function mapStateToProps(state) {
   return {
     selectedOptions: state.selectedOptions,
-    defaultProjectSpecs: state.defaultProjectSpecs
+    defaultProjectSpecs: state.newPalletRackProjectSpecs
     // newTopic: state.topic.newTopic
   };
 }
