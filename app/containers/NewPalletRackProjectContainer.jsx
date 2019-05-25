@@ -63,79 +63,83 @@ class NewPalletRackProjectContainer extends Component {
     for (var i = 0; i < defaultProjectSpecs.bays.length; i++) {
       trBays.push(
         <tr key={"trBaysWithValues" + "tr" + i}>
-        <td>{i}</td>
-        <td>
-        <FormControl
-        type="text"
+          <td>{i}</td>
+          <td>
+            <FormControl
+              type="text"
               // placeholder="12"
               id={"id-bay" + i + "-length"}
               defaultValue={defaultProjectSpecs.bays[i].length}
-              /></td>
-              <td> <FormControl
+            />
+          </td>
+          <td>
+            {" "}
+            <FormControl
               type="text"
               // placeholder="10"
               id={"id-bay" + i + "-qty"}
               defaultValue={defaultProjectSpecs.bays[i].qty}
-              />
-              </td>
-              <td>
-              <FormControl
+            />
+          </td>
+          <td>
+            <FormControl
               type="text"
               // placeholder="5"
               id={"id-bay" + i + "-levels"}
               defaultValue={defaultProjectSpecs.bays[i].levels}
-              />
-              </td>
-              <td>
-              <FormControl
+            />
+          </td>
+          <td>
+            <FormControl
               type="text"
               // placeholder="3000"
               id={"id-bay" + i + "-loadPerLevel"}
               defaultValue={defaultProjectSpecs.bays[i].loadPerLevel}
-              /></td>
-              </tr>
-              );
+            />
+          </td>
+        </tr>
+      );
     }
 
     if (trBays.length < 4) {
       for (var j = trBays.length; j < 4; j++) {
         trBays.push(
           <tr key={"trBays" + "tr" + j}>
-          <td>{j}</td>
-          <td>
-          <FormControl
-          type="text"
+            <td>{j}</td>
+            <td>
+              <FormControl
+                type="text"
                 // placeholder="12"
                 id={"id-bay" + j + "-length"}
                 defaultValue=""
-                />
-                </td>
-                <td>
-                <FormControl
+              />
+            </td>
+            <td>
+              <FormControl
                 type="text"
                 // placeholder="10"
                 id={"id-bay" + j + "-qty"}
                 defaultValue=""
-                />
-                </td>
-                <td>
-                <FormControl
+              />
+            </td>
+            <td>
+              <FormControl
                 type="text"
                 // placeholder="5"
                 id={"id-bay" + j + "-levels"}
                 defaultValue=""
-                />
-                </td>
-                <td>
-                <FormControl
+              />
+            </td>
+            <td>
+              <FormControl
                 type="text"
                 // placeholder="3000"
                 id={"id-bay" + j + "-loadPerLevel"}
                 defaultValue=""
-                />
-                </td>
-                </tr>
-                );
+              />
+            </td>
+          </tr>
+        );
       }
     }
 
@@ -143,209 +147,209 @@ class NewPalletRackProjectContainer extends Component {
     if (
       defaultProjectSpecs._id === null ||
       defaultProjectSpecs._id === undefined
-      ) {
+    ) {
       headerText = "New Pallet Rack Specs";
-  } else {
-    headerText = "Edit Pallet Rack Specs";
-  }
+    } else {
+      headerText = "Edit Pallet Rack Specs";
+    }
 
-  return (
-    <div>
-    New Pallet Rack Project Container
-    <div>
-    {headerText}
-    <form className="testbg-1">
-    <div className="container-fluid row">
-    <div className="col-sm-6 testbg-1">
-    <h4>Project Settings</h4>
-    <div className="well">
-    <FormGroup controlId="formControlsTextarea">
-    <div className="row">
-    <div className="col-xs-6">
-    <ControlLabel>Company Name</ControlLabel>
-    <FormControl
-    type="text"
-    id="id-company-name"
-    required="true"
-    defaultValue={
-      defaultProjectSpecs.projectSettings.companyName
-    }
-    />
-    </div>
-    <div className="col-xs-6">
-    <ControlLabel>Project Title</ControlLabel>
-    <FormControl
-    type="text"
-    defaultValue={
-      defaultProjectSpecs.projectSettings.projectTitle
-    }
-    id="id-project-title"
-    />
-    </div>
-    </div>
-    </FormGroup>
+    return (
+      <div>
+        New Pallet Rack Project Container
+        <div>
+          {headerText}
+          <form className="testbg-1">
+            <div className="container-fluid row">
+              <div className="col-sm-6 testbg-1">
+                <h4>Project Settings</h4>
+                <div className="well">
+                  <FormGroup controlId="formControlsTextarea">
+                    <div className="row">
+                      <div className="col-xs-6">
+                        <ControlLabel>Company Name</ControlLabel>
+                        <FormControl
+                          type="text"
+                          id="id-company-name"
+                          required="true"
+                          defaultValue={
+                            defaultProjectSpecs.projectSettings.companyName
+                          }
+                        />
+                      </div>
+                      <div className="col-xs-6">
+                        <ControlLabel>Project Title</ControlLabel>
+                        <FormControl
+                          type="text"
+                          defaultValue={
+                            defaultProjectSpecs.projectSettings.projectTitle
+                          }
+                          id="id-project-title"
+                        />
+                      </div>
+                    </div>
+                  </FormGroup>
 
-    <div className="row">
-    <div className="col-xs-6">
-    <ControlLabel>Racks Description</ControlLabel>
-    <FormControl
-    type="text"
-    id="id-racks-description"
-    defaultValue={
-      defaultProjectSpecs.projectSettings.racksDescription
-    }
-    />
-    </div>
-    <div className="col-xs-6">
-    <ControlLabel>Current Metal Price</ControlLabel>
-    <FormControl
-    type="text"
-    defaultValue={
-      defaultProjectSpecs.projectSettings.currentMetalPrices
-    }
-    id="id-current-metal-prices"
-    />
-    </div>
-    </div>
-    </div>
+                  <div className="row">
+                    <div className="col-xs-6">
+                      <ControlLabel>Racks Description</ControlLabel>
+                      <FormControl
+                        type="text"
+                        id="id-racks-description"
+                        defaultValue={
+                          defaultProjectSpecs.projectSettings.racksDescription
+                        }
+                      />
+                    </div>
+                    <div className="col-xs-6">
+                      <ControlLabel>Current Metal Price</ControlLabel>
+                      <FormControl
+                        type="text"
+                        defaultValue={
+                          defaultProjectSpecs.projectSettings.currentMetalPrices
+                        }
+                        id="id-current-metal-prices"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-    <h4>Frame</h4>
-    <div className="well">
-    <Table className="borderless table">
-    <thead>
-    <tr>
-    <th>#</th>
-    <th>Height (ft)</th>
-    <th>Depth</th>
-    <th>Qty.</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>1</td>
-    <td>
-    <FormControl
-    type="text"
+                <h4>Frame</h4>
+                <div className="well">
+                  <Table className="borderless table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Height (ft)</th>
+                        <th>Depth</th>
+                        <th>Qty.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          <FormControl
+                            type="text"
                             // placeholder="15"
                             id="id-frame1-height"
                             defaultValue={defaultProjectSpecs.frame.frameHeight}
-                            />
-                            </td>
-                            <td>
-                            <FormControl
+                          />
+                        </td>
+                        <td>
+                          <FormControl
                             type="text"
                             // placeholder="3"
                             id="id-frame1-depth"
                             defaultValue={defaultProjectSpecs.frame.frameDepth}
-                            />
-                            </td>
-                            <td>
-                            <FormControl
+                          />
+                        </td>
+                        <td>
+                          <FormControl
                             type="text"
                             // placeholder="10"
                             id="id-frame1-qty"
                             defaultValue={defaultProjectSpecs.frame.frameQty}
-                            />
-                            </td>
-                            </tr>
-                            </tbody>
-                            </Table>
-                            </div>
-                            </div>
-                            <div className="col-sm-6 testbg-2">
-                            <h4>Bays</h4>
-                            <div className="well">
-                            <Table className="borderless table">
-                            <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>Length (ft)</th>
-                            <th>Qty.</th>
-                            <th>Levels</th>
-                            <th>Load per Level (kgs)</th>
-                            </tr>
-                            </thead>
-                            <tbody>{trBays}</tbody>
-                            </Table>
-                            </div>
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+              </div>
+              <div className="col-sm-6 testbg-2">
+                <h4>Bays</h4>
+                <div className="well">
+                  <Table className="borderless table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Length (ft)</th>
+                        <th>Qty.</th>
+                        <th>Levels</th>
+                        <th>Load per Level (kgs)</th>
+                      </tr>
+                    </thead>
+                    <tbody>{trBays}</tbody>
+                  </Table>
+                </div>
 
-                            <div className="well">
-                            <FormGroup>
-                            <ControlLabel>Select Shelf Type: </ControlLabel>
-                            <br />
-                            <Radio
-                            inline
-                            name="option"
-                            id="id-radio-noshelf"
-                            onChange={this.handleOptionChange}
-                            value="noShelf"
-                            checked={this.state.selectedShelfOption === "noShelf"}
-                            >
-                            No Shelf (Pallet Only)
-                            </Radio>{" "}
-                            <Radio
-                            inline
-                            name="option"
-                            onChange={this.handleOptionChange}
-                            value="metalShelf1.0mm"
-                            checked={
-                              this.state.selectedShelfOption === "metalShelf1.0mm"
-                            }
-                            >
-                            Metal Shelf 1.0mm
-                            </Radio>{" "}
-                            <Radio
-                            inline
-                            name="option"
-                            onChange={this.handleOptionChange}
-                            value="metalShelf1.2mm"
-                            checked={
-                              this.state.selectedShelfOption === "metalShelf1.2mm"
-                            }
-                            >
-                            Metal Shelf 1.2mm
-                            </Radio>{" "}
-                            <Radio
-                            inline
-                            name="option"
-                            onChange={this.handleOptionChange}
-                            value="metalShelf1.5mm"
-                            checked={
-                              this.state.selectedShelfOption === "metalShelf1.5mm"
-                            }
-                            >
-                            Metal Shelf 1.5mm
-                            </Radio>{" "}
-                            <Radio
-                            inline
-                            name="option"
-                            onChange={this.handleOptionChange}
-                            value="metalShelf2.0mm"
-                            checked={
-                              this.state.selectedShelfOption === "metalShelf2.0mm"
-                            }
-                            >
-                            Metal Shelf 2.0mm
-                            </Radio>
-                            </FormGroup>
-                            </div>
-                            </div>
-                            </div>
-                            <div className="container-fluid testbg-1 text-center">
-                            <Button onClick={this.btnGenerateQuote} bsStyle="primary">
-                            Generate Quote
-                            </Button>
-                            <br />
-                            <br />
-                            <Button onClick={this.btnCancel} bsStyle="default" bsSize="small">
-                            Cancel
-                            </Button>
-                            </div>
-                            </form>
-                            </div>
-                            </div>
-                            );
-}
+                <div className="well">
+                  <FormGroup>
+                    <ControlLabel>Select Shelf Type: </ControlLabel>
+                    <br />
+                    <Radio
+                      inline
+                      name="option"
+                      id="id-radio-noshelf"
+                      onChange={this.handleOptionChange}
+                      value="noShelf"
+                      checked={this.state.selectedShelfOption === "noShelf"}
+                    >
+                      No Shelf (Pallet Only)
+                    </Radio>{" "}
+                    <Radio
+                      inline
+                      name="option"
+                      onChange={this.handleOptionChange}
+                      value="metalShelf1.0mm"
+                      checked={
+                        this.state.selectedShelfOption === "metalShelf1.0mm"
+                      }
+                    >
+                      Metal Shelf 1.0mm
+                    </Radio>{" "}
+                    <Radio
+                      inline
+                      name="option"
+                      onChange={this.handleOptionChange}
+                      value="metalShelf1.2mm"
+                      checked={
+                        this.state.selectedShelfOption === "metalShelf1.2mm"
+                      }
+                    >
+                      Metal Shelf 1.2mm
+                    </Radio>{" "}
+                    <Radio
+                      inline
+                      name="option"
+                      onChange={this.handleOptionChange}
+                      value="metalShelf1.5mm"
+                      checked={
+                        this.state.selectedShelfOption === "metalShelf1.5mm"
+                      }
+                    >
+                      Metal Shelf 1.5mm
+                    </Radio>{" "}
+                    <Radio
+                      inline
+                      name="option"
+                      onChange={this.handleOptionChange}
+                      value="metalShelf2.0mm"
+                      checked={
+                        this.state.selectedShelfOption === "metalShelf2.0mm"
+                      }
+                    >
+                      Metal Shelf 2.0mm
+                    </Radio>
+                  </FormGroup>
+                </div>
+              </div>
+            </div>
+            <div className="container-fluid testbg-1 text-center">
+              <Button onClick={this.btnGenerateQuote} bsStyle="primary">
+                Generate Quote
+              </Button>
+              <br />
+              <br />
+              <Button onClick={this.btnCancel} bsStyle="default" bsSize="small">
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
 NewPalletRackProjectContainer.propTypes = {
@@ -376,4 +380,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(NewPalletRackProjectContainer);
+)(NewPalletRackProjectContainer);
