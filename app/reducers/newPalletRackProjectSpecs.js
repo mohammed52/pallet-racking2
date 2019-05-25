@@ -2,22 +2,22 @@ import { DEFAULT_SETTINGS } from "../containers/helpers/defaultSettings";
 
 const initialState = {
   projectSettings: {
-    racksDescription: "10x4x5, 3level, 1000kgs/lvl",
-    companyName: "MEK",
-    projectTitle: "Yamaha Project",
-    currentMetalPrices: 90
+    racksDescription: "",
+    companyName: "",
+    projectTitle: "",
+    currentMetalPrices: 135
   },
   frame: {
-    frameHeight: "12",
-    frameQty: "2",
-    frameDepth: "3"
+    frameHeight: "",
+    frameQty: "",
+    frameDepth: ""
   },
   bays: [
     {
-      length: "9",
-      qty: "1",
-      levels: "3",
-      loadPerLevel: "2000"
+      length: "",
+      qty: "",
+      levels: "",
+      loadPerLevel: ""
     },
     {
       length: "",

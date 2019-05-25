@@ -16,22 +16,22 @@ export default function render(req, res) {
 
   const newPalletRackProjectSpecs = {
     projectSettings: {
-      racksDescription: "10x4x5, 3level, 1000kgs/lvl",
-      companyName: "MEK",
-      projectTitle: "Yamaha Project",
-      currentMetalPrices: 90
+      racksDescription: "",
+      companyName: "",
+      projectTitle: "",
+      currentMetalPrices: 135
     },
     frame: {
-      frameHeight: "12",
-      frameQty: "2",
-      frameDepth: "3"
+      frameHeight: "",
+      frameQty: "",
+      frameDepth: ""
     },
     bays: [
       {
-        length: "9",
-        qty: "1",
-        levels: "3",
-        loadPerLevel: "2000"
+        length: "",
+        qty: "",
+        levels: "",
+        loadPerLevel: ""
       },
       {
         length: "",
@@ -93,7 +93,10 @@ export default function render(req, res) {
    * If all three parameters are `undefined`, this means that there was no route found matching the
    * given location.
    */
-  match({ routes, location: req.url }, (err, redirect, props) => {
+  match({
+    routes,
+    location: req.url
+  }, (err, redirect, props) => {
     if (err) {
       res.status(500).json(err);
     } else if (redirect) {
@@ -101,10 +104,15 @@ export default function render(req, res) {
     } else if (props) {
       // This method waits for all render component
       // promises to resolve before returning to browser
-      store.dispatch({ type: types.CREATE_REQUEST });
+      store.dispatch({
+        type: types.CREATE_REQUEST
+      });
       fetchDataForRoute(props)
         .then(data => {
-          store.dispatch({ type: types.REQUEST_SUCCESS, data });
+          store.dispatch({
+            type: types.REQUEST_SUCCESS,
+            data
+          });
           const html = pageRenderer(store, props);
           res.status(200).send(html);
         })
