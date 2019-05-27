@@ -12,6 +12,8 @@ import {
   setPurpose,
   setRepeatApply
 } from "../actions/selectedOptionsActions";
+import { removeZeroValueBays } from "./helpers/removeZeroValueBays";
+
 import { logOut } from "../actions/users";
 
 var ReactBootstrap = require("react-bootstrap");
@@ -29,7 +31,10 @@ class NewPalletRackProjectContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
     const defaultProjectSpecs = this.props.defaultProjectSpecs;
+
     this.state = {
       selectedShelfOption: defaultProjectSpecs.shelfType
     };
@@ -51,6 +56,72 @@ class NewPalletRackProjectContainer extends Component {
   createNewProject() {
     browserHistory.push({ pathname: "/newpalletrackproject" });
   }
+
+  btnGenerateQuote() {
+    const defaultProjectSpecs = this.props.defaultProjectSpecs;
+
+    var bays = [
+      {
+        length: Number($("#id-bay0-length").val()),
+        qty: Number($("#id-bay0-qty").val()),
+        levels: Number($("#id-bay0-levels").val()),
+        loadPerLevel: Number($("#id-bay0-loadPerLevel").val())
+      },
+      {
+        length: Number($("#id-bay1-length").val()),
+        qty: Number($("#id-bay1-qty").val()),
+        levels: Number($("#id-bay1-levels").val()),
+        loadPerLevel: Number($("#id-bay1-loadPerLevel").val())
+      },
+      {
+        length: Number($("#id-bay2-length").val()),
+        qty: Number($("#id-bay2-qty").val()),
+        levels: Number($("#id-bay2-levels").val()),
+        loadPerLevel: Number($("#id-bay2-loadPerLevel").val())
+      },
+      {
+        length: Number($("#id-bay3-length").val()),
+        qty: Number($("#id-bay3-qty").val()),
+        levels: Number($("#id-bay3-levels").val()),
+        loadPerLevel: Number($("#id-bay3-loadPerLevel").val())
+      }
+    ];
+
+    bays = removeZeroValueBays(bays);
+
+    const rackingRequirements = {
+      projectSettings: {
+        racksDescription: $("#id-racks-description").val(),
+        currentMetalPrices: Number($("#id-current-metal-prices").val()),
+        companyName: $("#id-company-name").val(),
+        projectTitle: $("#id-project-title").val()
+      },
+      frame: {
+        frameHeight: Number($("#id-frame1-height").val()),
+        frameDepth: Number($("#id-frame1-depth").val()),
+        frameQty: Number($("#id-frame1-qty").val())
+      },
+      bays: bays,
+      shelfType: this.state.selectedShelfOption,
+      createdAt: new Date(),
+      _id: defaultProjectSpecs._id,
+      margin: defaultProjectSpecs.margin
+    };
+
+    browserHistory.push({
+      pathname: "/showquote",
+      state: { rackingRequirements: rackingRequirements }
+    });
+    // insert.call(specs, displayError);
+  }
+
+  handleOptionChange(changeEvent) {
+    // console.log("changed");
+    this.setState({
+      selectedShelfOption: changeEvent.target.value
+    });
+  }
+
   render() {
     const defaultProjectSpecs = this.props.defaultProjectSpecs;
 
@@ -353,7 +424,7 @@ class NewPalletRackProjectContainer extends Component {
 }
 
 NewPalletRackProjectContainer.propTypes = {
-  logOut: PropTypes.func.isRequired,
+  // logOut: PropTypes.func.isRequired,
   defaultProjectSpecs: React.PropTypes.object
 };
 

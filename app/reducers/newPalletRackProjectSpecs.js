@@ -2,22 +2,22 @@ import { DEFAULT_SETTINGS } from "../containers/helpers/defaultSettings";
 
 const initialState = {
   projectSettings: {
-    racksDescription: "",
-    companyName: "",
-    projectTitle: "",
-    currentMetalPrices: 135
+    racksDescription: "20x9x3",
+    companyName: "MEK",
+    projectTitle: "Korangi Warehouse",
+    currentMetalPrices: 130
   },
   frame: {
-    frameHeight: "",
-    frameQty: "",
-    frameDepth: ""
+    frameHeight: "20",
+    frameQty: "12",
+    frameDepth: "3"
   },
   bays: [
     {
-      length: "",
-      qty: "",
-      levels: "",
-      loadPerLevel: ""
+      length: "9",
+      qty: "10",
+      levels: "5",
+      loadPerLevel: "2000"
     },
     {
       length: "",
@@ -43,7 +43,6 @@ const initialState = {
   _id: null,
   margin: 10
 };
-
 const newPalletRackProjectSpecs = (state = initialState, action) => {
   switch (action.type) {
     default: {

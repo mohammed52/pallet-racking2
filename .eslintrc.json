@@ -1,4 +1,11 @@
 {
+  "globals": {
+    // Put things like jQuery, etc
+    "jQuery": true,
+    "$": true,
+    "__DEVSERVER__": true,
+    "__DEVCLIENT__": true
+  },
   "parser": "babel-eslint",
   "extends": "airbnb",
   "env": {
@@ -38,30 +45,22 @@
     "semi": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-first-prop-new-line": 0,
-    "quotes":0,
-    "react/jsx-space-before-closing":0,
-    "no-multiple-empty-lines":0,
-    "prefer-const":0,
-    "class-methods-use-this":0,
-    "react/jsx-tag-spacing":0,
+    "quotes": 0,
+    "react/jsx-space-before-closing": 0,
+    "no-multiple-empty-lines": 0,
+    "prefer-const": 0,
+    "class-methods-use-this": 0,
+    "react/jsx-tag-spacing": 0,
     "react/jsx-indent": 1,
     "no-unused-vars": 1,
-    "no-sequences":0,
+    "no-sequences": 0,
     "no-trailing-spaces": 0,
     "no-plusplus": 0,
     "vars-on-top": 0,
-    "react/sort-comp":0,
+    "react/sort-comp": 0,
     "arrow-parens": 0,
     "spaced-comment": 0,
     "consistent-return": 0
-
   },
-  "plugins": [
-    "react",
-    "jsx-a11y"
-  ],
-  "globals": {
-    "__DEVSERVER__": true,
-    "__DEVCLIENT__": true
-  }
+  "plugins": ["react", "jsx-a11y"]
 }
