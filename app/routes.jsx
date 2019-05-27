@@ -7,7 +7,8 @@ import {
   Dashboard,
   About,
   LoginOrRegister,
-  NewPalletRackProjectPage
+  NewPalletRackProjectPage,
+  ShowQuotePage
 } from "./pages";
 
 /*
@@ -51,6 +52,7 @@ export default store => {
         component={NewPalletRackProjectPage}
         onEnter={requireAuth}
       />
+      <Route path="showquote" component={ShowQuotePage} onEnter={requireAuth} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
     </Route>
   );

@@ -27,7 +27,7 @@ var Table = ReactBootstrap.Table;
 var FieldGroup = ReactBootstrap.FieldGroup;
 var Input = ReactBootstrap.Input;
 
-class NewPalletRackProjectContainer extends Component {
+class ShowQuoteContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -423,7 +423,7 @@ class NewPalletRackProjectContainer extends Component {
   }
 }
 
-NewPalletRackProjectContainer.propTypes = {
+ShowQuoteContainer.propTypes = {
   // logOut: PropTypes.func.isRequired,
   defaultProjectSpecs: React.PropTypes.object
 };
@@ -451,4 +451,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewPalletRackProjectContainer);
+)(ShowQuoteContainer);
