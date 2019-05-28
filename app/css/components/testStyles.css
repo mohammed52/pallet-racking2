@@ -1,12 +1,12 @@
-.testGreen{
-  	border: 1px solid green;
-  }
-  .testBlue{
-  	border: 1px solid blue;
-  }
-  .testOrange{
-  	border: 1px solid orange;
-  }
-  .testRed{
-  	border: 1px solid red;
+.testGreen {
+  border: 1px solid green;
+}
+.testBlue {
+  border: 5px solid blue;
+}
+.testOrange {
+  border: 1px solid orange;
+}
+.testRed {
+  border: 1px solid red;
 }

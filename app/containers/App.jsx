@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect, browserHistory } from "react-router";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
-// import Navigation from '../containers/Navigation';
-// import Message from '../containers/Message';
+
+// import WrapperWithNavBar from "./WrapperWithNavBar";
+// import LoggedOutWrapperWithNavBar from "./LoggedOutWrapperWithNavBar";
+
 import styles from "../css/main";
 import ymtm from "../images/ymtm.png";
 import favicon from "../images/favicon.png";
@@ -58,23 +60,24 @@ class App extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
+
     return (
       <div>
-        <div className={styles.mainWrapper}>
-          <div className={styles.headerWrapper2}>
-            <div className={styles.headerWrapper}>
-              <h4>Lets Roll !</h4>
-            </div>
+        <div className={styles.headerWrapper2}>
+          <div className={styles.headerWrapper}>
+            <h4>Lets Roll !</h4>
           </div>
-          {this.props.children}
         </div>
+        {this.props.children}
       </div>
     );
   }
 }
 
 App.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.object,
+  isLoggedIn: PropTypes.bool
 };
 
 export default App;

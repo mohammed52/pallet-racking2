@@ -1,12 +1,12 @@
-@import 'settings';
-@import 'common/layout';
-@import 'common/typography';
-@import 'common/colors';
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+@import "settings";
+@import "common/layout";
+@import "common/typography";
+@import "common/colors";
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400, 700);
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
 
 /*@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');*/
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 * {
   box-sizing: border-box;
@@ -29,7 +29,7 @@ body {
 }
 
 .mainWrapper {
-  padding-top: 20px;/*  background-color: yellow;
+  padding-top: 20px; /*  background-color: yellow;
                           display: none;*/
   width: 100%;
 }
@@ -43,7 +43,9 @@ body {
   text-align: center;
 }
 
-.loader, .loader:before, .loader:after {
+.loader,
+.loader:before,
+.loader:after {
   background: #105223;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
@@ -64,10 +66,11 @@ body {
   animation-delay: -0.16s;
 }
 
-.loader:before, .loader:after {
+.loader:before,
+.loader:after {
   position: absolute;
   top: 0;
-  content: '';
+  content: "";
 }
 
 .loader:before {
@@ -81,7 +84,9 @@ body {
 }
 
 @-webkit-keyframes load1 {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     box-shadow: 0 0;
     height: 4em;
   }
@@ -90,11 +95,12 @@ body {
     box-shadow: 0 -2em;
     height: 5em;
   }
-
 }
 
 @keyframes load1 {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     box-shadow: 0 0;
     height: 4em;
   }
@@ -103,12 +109,12 @@ body {
     box-shadow: 0 -2em;
     height: 5em;
   }
-
 }
 
 /* Add your global styles below... */
 
-/*ex:*/:global {
+/*ex:*/
+:global {
   .anim-appear {
     opacity: 0.01;
   }
@@ -117,5 +123,4 @@ body {
     opacity: 2;
     transition: opacity 5s ease-in;
   }
-
 }

@@ -5,6 +5,7 @@ import classNames from "classnames/bind";
 import { connect } from "react-redux";
 import { manualLogin, signUp, toggleLoginMode } from "../actions/users";
 import styles from "../css/components/login";
+import "../css/components/login.css";
 import hourGlassSvg from "../images/hourglass.svg";
 
 const cx = classNames.bind(styles);
@@ -74,7 +75,7 @@ class LoginOrRegister extends Component {
           waiting: isWaiting
         })}
       >
-        <div className={cx("container")}>
+        <div className={["container", styles.loginWrapper].join(" ")}>
           {this.renderHeader()}
           <img className={cx("loading")} alt="loading" src={hourGlassSvg} />
           <div className={cx("email-container")}>

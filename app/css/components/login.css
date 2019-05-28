@@ -1,11 +1,16 @@
-@import '../settings';
-@import '../common/typography';
-@import '../common/colors';
-@import '../common/button';
-@import '../common/input';
+@import "../settings";
+@import "../common/typography";
+@import "../common/colors";
+@import "../common/button";
+@import "../common/input";
+@import "./testStyles";
+
+.loginWrapper {
+  max-width: 416px;
+}
 
 .login {
-  width: 420px;
+  max-width: 420px;
   margin: 0 auto;
   background-color: var(--colorAthensGray);
   border: 2px solid var(--colorMercury);
@@ -46,7 +51,8 @@
   padding: 16px 12px;
 }
 
-.header {}
+.header {
+}
 
 .heading {
   @apply --subHeading;
