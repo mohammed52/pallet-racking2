@@ -46,7 +46,7 @@ class ShowQuoteContainer extends Component {
     super(props);
     this.onMarginChange = this.onMarginChange.bind(this);
     this.state = {
-      margin: 0
+      margin: this.props.location.state.rackingRequirements.margin
     };
   }
 
@@ -63,6 +63,83 @@ class ShowQuoteContainer extends Component {
   }
 
   render() {
+    let rackingRequirements = this.props.location.state.rackingRequirements;
+    rackingRequirements.margin = this.state.margin;
+
+    var arrayCostObjects = [];
+    const bays = rackingRequirements.bays;
+
+    arrayCostObjects.push(getUprightSpecsAndCost(rackingRequirements));
+
+    var trArr = [];
+    let specsOnly = [];
+    specsOnly = loadDefaultSpecs(specsOnly, rackingRequirements);
+
+    for (var k = 0; k < arrayCostObjects.length; k++) {
+      trArr.push(
+        <tr key={"trArr" + "tr" + k}>
+          <td>{k + 1}</td>
+          <td>{arrayCostObjects[k].description}</td>
+          <td>{arrayCostObjects[k].unitWeight.toFixed(2)}</td>
+          <td>{arrayCostObjects[k].qty}</td>
+          <td>
+            {(arrayCostObjects[k].unitWeight * arrayCostObjects[k].qty).toFixed(
+              2
+            )}
+          </td>
+        </tr>
+      );
+
+      //get total rack description
+      if (k === 0) {
+        specsOnly.push(
+          <span key={"specsOnly" + k}>
+            {"-- " + arrayCostObjects[k].description}
+          </span>
+        );
+      } else {
+        specsOnly.push(<br key={"specsOnly" + "br" + k} />);
+        specsOnly.push(
+          <span key={"specsOnly" + "span" + k}>
+            {"-- " + arrayCostObjects[k].description}
+          </span>
+        );
+      }
+    }
+
+    var totalProjectWeight = 0;
+
+    for (var l = 0; l < arrayCostObjects.length; l++) {
+      totalProjectWeight +=
+        arrayCostObjects[l].unitWeight * arrayCostObjects[l].qty;
+    }
+
+    const totalRacks = getTotalRacksQty(rackingRequirements);
+
+    trArr.push(
+      <tr key="trArr-tr-totalProject-Weight">
+        <td />
+        <td />
+        <td />
+        <td>
+          <strong>Total Project Weight:</strong>
+        </td>
+        <td>
+          <strong>{totalProjectWeight.toFixed(2)}</strong>
+        </td>
+      </tr>
+    );
+
+    trArr.push(
+      <tr key="trArr-tr-weightPerRack">
+        <td />
+        <td />
+        <td />
+        <td>Weight Per Rack:</td>
+        <td>{(totalProjectWeight / totalRacks).toFixed(2)}</td>
+      </tr>
+    );
+
     return (
       <div>
         Show Quote
@@ -165,7 +242,7 @@ class ShowQuoteContainer extends Component {
 
 ShowQuoteContainer.propTypes = {
   // logOut: PropTypes.func.isRequired,
-  defaultProjectSpecs: React.PropTypes.object
+  // defaultProjectSpecs: React.PropTypes.object
 };
 
 function mapStateToProps(state) {
