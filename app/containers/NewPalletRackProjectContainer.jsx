@@ -425,7 +425,8 @@ class ShowQuoteContainer extends Component {
 
 ShowQuoteContainer.propTypes = {
   // logOut: PropTypes.func.isRequired,
-  defaultProjectSpecs: React.PropTypes.object
+  defaultProjectSpecs: React.PropTypes.object,
+  rackingRequirements: React.PropTypes.rackingRequirements
 };
 
 function mapStateToProps(state) {
