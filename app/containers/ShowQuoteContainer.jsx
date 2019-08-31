@@ -140,6 +140,42 @@ class ShowQuoteContainer extends Component {
       </tr>
     );
 
+    const unitPrice =
+      Number(
+        this.props.location.state.rackingRequirements.projectSettings
+          .currentMetalPrices
+      ) + Number(CostPriceAddOns.price);
+
+    let pricingTableArr = [];
+    for (var m = 0; m < PricingTable.length; m++) {
+      pricingTableArr.push(
+        <tr key={"pricingTableArr" + "tr" + m}>
+          <td>{PricingTable[m].description}</td>
+          <td>
+            {"Rs." +
+              numberWithCommas(
+                (
+                  (PricingTable[m].rate * unitPrice * totalProjectWeight) /
+                  totalRacks
+                ).toFixed(2)
+              ) +
+              "/-"}
+          </td>
+          <td>
+            {"Rs." +
+              numberWithCommas(
+                (PricingTable[m].rate * unitPrice * totalProjectWeight).toFixed(
+                  2
+                )
+              ) +
+              "/-"}
+          </td>
+        </tr>
+      );
+    }
+
+    const customMargin = (this.state.margin + 100) / 100;
+
     return (
       <div>
         Show Quote
@@ -184,9 +220,28 @@ class ShowQuoteContainer extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <th />
-                    <th />
-                    <th />
+                    <th>
+                      {"Rs. " +
+                        numberWithCommas(
+                          (
+                            (unitPrice * totalProjectWeight * customMargin) /
+                            totalRacks
+                          ).toFixed(2)
+                        ) +
+                        "/-"}
+                    </th>
+                    <th>{totalRacks}</th>
+                    <th>
+                      {"Rs. " +
+                        numberWithCommas(
+                          (
+                            unitPrice *
+                            totalProjectWeight *
+                            customMargin
+                          ).toFixed(2)
+                        ) +
+                        "/-"}
+                    </th>
                   </tr>
                 </tbody>
               </Table>
@@ -219,12 +274,12 @@ class ShowQuoteContainer extends Component {
                     <th>Sub Total</th>
                   </tr>
                 </thead>
-                <tbody />
+                <tbody>{trArr}</tbody>
               </Table>
             </div>
 
             <h4>Specificaions</h4>
-            <div className="well" />
+            <div className="well">{specsOnly}</div>
           </div>
         </div>
         <div className="container-fluid testbg-1 text-center">
