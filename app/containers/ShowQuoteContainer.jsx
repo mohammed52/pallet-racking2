@@ -278,7 +278,7 @@ class ShowQuoteContainer extends Component {
               </Table>
             </div>
 
-            <h4>Specificaions</h4>
+            <h4>Specifications</h4>
             <div className="well">{specsOnly}</div>
           </div>
         </div>
