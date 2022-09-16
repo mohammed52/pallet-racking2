@@ -60,7 +60,7 @@
         "bcrypt-nodejs": "0.0.3",
         "bluebird": "^3.5.0",
         "body-parser": "^1.17.1",
-        "bootstrap": "^3.3.7",
+        "bootstrap": "^3.4.1",
         "bson": "^1.0.4",
         "classnames": "^2.2.3",
         "compression": "^1.6.2",
